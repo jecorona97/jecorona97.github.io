@@ -4,7 +4,7 @@ email: jecoronaespinoza@gmail.com
 description: "Personal Website"
 baseurl: ""
 url: "https://jecorona97.github.io"
-title_description: "I'm a Junior Computer Science student at the University of California, Irvine. Passionate about tech, entrepreneurship and diversity. "
+title_description: "I am a Computer Science student at UC Irvine currently seeking Machine Learning/Software Engineering internship opportunities for summer 2019. "
 title_image: "me.jpg"
 google_analytics: "UA-111659041-1"
 disqus_account:
@@ -13,7 +13,7 @@ addthis_id: ""
 post_limit: 5
 
 # Social usernames/URLs
-twitter_username: _CoronaLight_
+twitter_username: edcorona_
 github_username: jecorona97
 instagram_username: jecorona97
 reddit_username: 
