@@ -1,16 +1,16 @@
 # Site settings
-title: "Eduardo Corona"
+title: "Jose Eduardo Corona Espinoza"
 email: jecoronaespinoza@gmail.com
 description: "Personal Website"
 baseurl: ""
 url: "https://jecorona97.github.io"
-title_description: "I am a Computer Science student at UC Irvine currently seeking Software Engineering internship opportunities for Fall 2019. "
+title_description: "I am a Computer Science student at UC Irvine currently seeking Software Engineering Full-ime opportunities. "
 title_image: "me.jpg"
 google_analytics: "UA-111659041-1"
 disqus_account:
 github_repository: https://github.com/jecorona97/jecorona97.github.io
 addthis_id: ""
-post_limit: 5
+post_limit: 0
 
 # Social usernames/URLs
 twitter_username: edcorona_
