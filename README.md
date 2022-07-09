@@ -3,7 +3,7 @@ https://jecorona97.github.io
 
 
 ## Theme
-The jekyll theme used was created by [@_jacobtomlinson]. Content is mine.
+The jekyll theme used was created by [@_jacobtomlinson].
 https://github.com/jacobtomlinson/carte-noire\
 
 ## License
