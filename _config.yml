@@ -4,8 +4,8 @@ email: jecoronaespinoza@gmail.com
 description: "Personal Website"
 baseurl: ""
 url: "https://jecorona97.github.io"
-title_description: "Hi! I am a student at UC Irvine studying Computer Science and I am currently seeking Software Engineering Full-time opportunities. "
-title_image: "me.jpg"
+title_description: ""
+title_image: "1539425927866.jpeg"
 google_analytics: "UA-111659041-1"
 disqus_account:
 github_repository: https://github.com/jecorona97/jecorona97.github.io
@@ -24,7 +24,7 @@ xing_link:
 facebook_link: 
 
 # Footer
-footer_left: "2018 Eduardo Corona"
+footer_left: "2022 Eduardo Corona"
 footer_right: "Jekyll"
 
 # Build settings
