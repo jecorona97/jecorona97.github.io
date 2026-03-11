@@ -1,0 +1,76 @@
+---
+layout: default
+title: Anonymous Message
+permalink: /contact/
+---
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 main content-panel">
+
+      <h1 class="header">Send an Anonymous Message</h1>
+      <p>Your message will be delivered to Ed without any identifying information. No email, no name, nothing.</p>
+
+      <div id="contact-form">
+        <textarea id="message" rows="10" placeholder="Write your message here..." style="width:100%;padding:12px;font-size:15px;border:1px solid #ddd;border-radius:4px;resize:vertical;box-sizing:border-box;"></textarea>
+        <div style="margin-top:10px;display:flex;align-items:center;gap:12px;">
+          <button id="send-btn" onclick="sendMessage()" style="padding:10px 24px;background:#333;color:#fff;border:none;border-radius:4px;font-size:15px;cursor:pointer;">Send Anonymously</button>
+          <span id="status" style="font-size:14px;"></span>
+        </div>
+        <p style="margin-top:16px;font-size:13px;color:#888;">Messages are limited to 5,000 characters. No attachments.</p>
+      </div>
+
+      <div id="success-msg" style="display:none;padding:20px;background:#f0fff4;border:1px solid #68d391;border-radius:4px;color:#276749;">
+        ✅ Message sent. Ed will never know it was you.
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+async function sendMessage() {
+  const message = document.getElementById('message').value.trim();
+  const btn = document.getElementById('send-btn');
+  const status = document.getElementById('status');
+
+  if (!message) {
+    status.textContent = 'Please write a message first.';
+    status.style.color = '#c53030';
+    return;
+  }
+  if (message.length > 5000) {
+    status.textContent = 'Message too long (max 5,000 characters).';
+    status.style.color = '#c53030';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  status.textContent = '';
+
+  try {
+    const res = await fetch('https://anon-mailer.vercel.app/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message })
+    });
+
+    if (res.ok) {
+      document.getElementById('contact-form').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+    } else {
+      const data = await res.json().catch(() => ({}));
+      status.textContent = data.error || 'Something went wrong. Try again.';
+      status.style.color = '#c53030';
+      btn.disabled = false;
+      btn.textContent = 'Send Anonymously';
+    }
+  } catch (e) {
+    status.textContent = 'Network error. Try again.';
+    status.style.color = '#c53030';
+    btn.disabled = false;
+    btn.textContent = 'Send Anonymously';
+  }
+}
+</script>
