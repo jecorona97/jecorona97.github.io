@@ -34,10 +34,6 @@
 
     <!-- Section 3: Terminal Interface -->
     <section class="terminal" aria-label="Anonymous message">
-      <div class="terminal-header">
-        <span class="terminal-prompt">ed@site:~$</span>
-        <span class="cursor" aria-hidden="true"></span>
-      </div>
       <div id="terminal-body">
         <div id="anon-form">
           <textarea
@@ -77,7 +73,7 @@
 
   <!-- Footer -->
   <footer class="site-footer">
-    <div class="footer-sig" tabindex="0" aria-describedby="footer-reveal">
+    <div class="footer-sig" tabindex="0" aria-describedby="footer-reveal" onclick="this.classList.toggle('open')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('open')">
       <span class="footer-text">ed <span class="footer-amp">+</span> edbot — 2026</span>
     </div>
     <div id="footer-reveal" class="footer-reveal" role="tooltip" aria-hidden="true">
