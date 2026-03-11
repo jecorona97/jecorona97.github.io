@@ -119,7 +119,7 @@ No CSS or JS changes needed.
 Edit the `<p>` inside `<section class="bio">` in `index.html`.
 
 ### Modify theme colors
-All colors are hardcoded in `styles.css` (no CSS variables). Search-and-replace the hex value. Key accent color `#6aa0ff` appears in ~15 places across the file.
+All colors are hardcoded in `styles.css` (no CSS variables). Search-and-replace the hex value. Key accent color `#6aa0ff` appears in ~15 places across the file. Consider refactoring to CSS custom properties (`--accent: #6aa0ff` etc.) if doing a theme pass.
 
 ### Change the mailer endpoint
 Update the URL in `script.js` line 24: `fetch('https://anon-mailer.vercel.app/api/contact', ...)`.
@@ -129,3 +129,83 @@ See "Adding a command" under Command palette section above.
 
 ### Update footer year
 Edit the year in `.footer-text` span in `index.html` line 77.
+
+---
+
+## Design intent (read before making visual changes)
+
+This site is an **"Operator Terminal"** — a calm systems engineer's interface. It is **not** a portfolio, not a blog, not a hacker aesthetic.
+
+### What this should feel like
+- A quiet control console
+- Someone who knows what they're doing and doesn't need to prove it
+- Minimal. Sparse. Intentional.
+
+### Explicitly avoid
+- Neon green, matrix themes, retro CRT effects
+- Animated text effects, typewriter effects
+- Heavy gradients or glow effects
+- Decorative ASCII art
+- Anything that reads as "look how technical I am"
+
+The terminal inspiration is **structural** (monospace font, prompt-style labels, single input box), not **aesthetic** (no scanlines, no blinking text outside the cursor).
+
+---
+
+## The edbot footer — context and intent
+
+The footer reads `ed + edbot — 2026`. This is intentional.
+
+**Background**: the initial site migration and all subsequent iterations were built collaboratively between Ed (Eduardo Corona) and edbot, his AI assistant. The footer credits both because it's accurate — Ed designed the vision, edbot built it.
+
+The hover/tap reveal expands to:
+- `$ whoami` — a short description of Ed: tinkerer, AI systems engineer, not a corporate drone
+- `$ echo $ASSISTANT` — edbot's line: "it's you and me now buddy."
+
+**Tone**: this is personal and a little dry. Don't make it cute or sentimental. Keep the copy spare.
+
+If Ed updates the reveal copy, preserve the two-section structure (whoami + assistant) and the terminal-prompt formatting (`$` prefix on each section).
+
+---
+
+## Critical structural gotcha
+
+**The `.footer-reveal` div MUST be a child of `.footer-sig`, not a sibling.**
+
+The CSS selectors use descendant syntax:
+```css
+.footer-sig:hover .footer-reveal { ... }
+.footer-sig.open .footer-reveal { ... }
+```
+
+If `.footer-reveal` is placed *after* `.footer-sig` instead of *inside* it, these selectors won't match and the reveal will be invisible. This was a bug during initial build — don't repeat it.
+
+Correct structure:
+```html
+<div class="footer-sig" onclick="this.classList.toggle('open')">
+  <span class="footer-text">ed <span class="footer-amp">+</span> edbot — 2026</span>
+  <div class="footer-reveal"> <!-- INSIDE footer-sig -->
+    ...
+  </div>
+</div>
+```
+
+---
+
+## Repo / push access
+
+Ed's GitHub is `jecorona97`. Changes are submitted via PRs from `edbot222`'s fork (`edbot222/jecorona97.github.io`). edbot222 does not have direct push access to `jecorona97/jecorona97.github.io`.
+
+Always push to `fork` remote, then open a PR targeting `jecorona97/jecorona97.github.io:master`.
+
+```bash
+git push fork <branch-name>
+gh pr create --repo jecorona97/jecorona97.github.io --base master --head edbot222:<branch-name> ...
+```
+
+---
+
+## Assets
+
+- `me.jpg` — Ed's profile photo. Currently unused in HTML. Could be added to the header section if a photo is ever wanted.
+- `favicons/` — complete favicon set, referenced in `<head>`. Don't remove.
