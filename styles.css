@@ -83,33 +83,6 @@ main {
   overflow: hidden;
 }
 
-.terminal-header {
-  padding: 12px 16px;
-  border-bottom: 1px solid #3a3a3a;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.terminal-prompt {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.9rem;
-  color: #6aa0ff;
-}
-
-.cursor {
-  display: inline-block;
-  width: 8px;
-  height: 16px;
-  background: #6aa0ff;
-  animation: blink 1s step-end infinite;
-  vertical-align: middle;
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
-}
-
 #terminal-body {
   padding: 16px;
 }
@@ -314,7 +287,8 @@ main {
 }
 
 .footer-sig:hover .footer-reveal,
-.footer-sig:focus .footer-reveal {
+.footer-sig:focus .footer-reveal,
+.footer-sig.open .footer-reveal {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
