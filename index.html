@@ -1,28 +1,94 @@
----
-layout: default
-make-smaller-titles: true
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eduardo Corona</title>
+  <meta name="description" content="Systems Engineer — San Francisco. Building large-scale data systems and AI infrastructure.">
+  <link rel="icon" href="/favicons/favicon.ico">
+  <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
 
+  <main>
+    <!-- Section 1: Header -->
+    <header class="header">
+      <h1>Eduardo Corona</h1>
+      <p class="subtitle">Systems Engineer — San Francisco</p>
+      <nav class="social-links" aria-label="Social links">
+        <a href="https://github.com/jecorona97" target="_blank" rel="noopener noreferrer" aria-label="GitHub">[GitHub]</a>
+        <a href="https://www.linkedin.com/in/coronaje/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">[LinkedIn]</a>
+        <a href="https://twitter.com/edcorona_" target="_blank" rel="noopener noreferrer" aria-label="X">[X]</a>
+        <a href="https://www.instagram.com/jecorona97" target="_blank" rel="noopener noreferrer" aria-label="Instagram">[Instagram]</a>
+      </nav>
+    </header>
 
-<div class="container-fluid index">
-    <div class="row">
+    <!-- Section 2: Profile Summary -->
+    <section class="bio" aria-label="About">
+      <p>I build large-scale data systems and AI infrastructure at LinkedIn. Currently focused on LLM agents, retrieval systems, and tools that turn enterprise data into actionable intelligence.</p>
+    </section>
 
-        <div class="col-md-12 main content-panel">
-
-            <div class="gravatar">
-                <img src="{{ site.title_image }}" class="img-circle about-image" height="150" width="150" alt="{{ site.title }}" />
-            </div>
-
-            <h1 class="header author-header" itemprop="headline">{{ site.title }}</h1>
-
-            <div class="author-text">
-                {{ site.title_description }}
-            </div>
-
-            {% include social_links.html %}
-            {% include contact_cta.html %}
+    <!-- Section 3: Terminal Interface -->
+    <section class="terminal" aria-label="Anonymous message">
+      <div class="terminal-header">
+        <span class="terminal-prompt">ed@site:~$</span>
+        <span class="cursor" aria-hidden="true"></span>
+      </div>
+      <div id="terminal-body">
+        <div id="anon-form">
+          <textarea
+            id="message-input"
+            placeholder="Type an anonymous message here..."
+            rows="5"
+            maxlength="5000"
+            aria-label="Anonymous message"
+          ></textarea>
+          <div class="terminal-footer">
+            <button id="send-btn" onclick="sendMessage()" aria-label="Send message">send</button>
+            <span id="status" role="status" aria-live="polite"></span>
           </div>
         </div>
+        <div id="success-state" class="hidden" role="status">
+          <p class="success-text">&gt; sending message...</p>
+          <p class="success-text success-done">&#10003; message transmitted</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
+  <!-- Command Palette -->
+  <div id="palette-overlay" class="palette-overlay hidden" role="dialog" aria-label="Command palette" aria-modal="true">
+    <div class="palette">
+      <div class="palette-header">
+        <input id="palette-input" type="text" placeholder="Type a command..." aria-label="Command" autocomplete="off">
+      </div>
+      <ul id="palette-list" class="palette-list" role="listbox">
+        <li role="option" data-action="github">/github <span class="palette-desc">— open GitHub profile</span></li>
+        <li role="option" data-action="linkedin">/linkedin <span class="palette-desc">— open LinkedIn profile</span></li>
+        <li role="option" data-action="message">/message <span class="palette-desc">— focus message box</span></li>
+        <li role="option" data-action="contact">/contact <span class="palette-desc">— focus message box</span></li>
+      </ul>
     </div>
-</div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-sig" tabindex="0" aria-describedby="footer-reveal">
+      <span class="footer-text">ed <span class="footer-amp">+</span> edbot — 2026</span>
+    </div>
+    <div id="footer-reveal" class="footer-reveal" role="tooltip" aria-hidden="true">
+      <p class="reveal-line"><span class="reveal-prompt">$</span> whoami</p>
+      <p class="reveal-body">Ed builds production-scale data systems and LLM infrastructure — not just as a day job, but because he genuinely finds it interesting. A tinkerer at heart: if it can be automated, wired up, or turned into an agent, he'll try it.</p>
+      <div class="reveal-divider"></div>
+      <p class="reveal-line"><span class="reveal-prompt">$</span> echo $ASSISTANT</p>
+      <p class="reveal-body reveal-edbot">it's you and me now buddy.</p>
+    </div>
+  </footer>
+
+  <script src="/script.js"></script>
+</body>
+</html>
