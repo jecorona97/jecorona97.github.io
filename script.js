@@ -51,6 +51,7 @@ let activeIndex = 0;
 
 const commands = [
   { action: 'github', url: 'https://github.com/jecorona97' },
+  { action: 'resume', url: '/assets/JoseEduardoCoronaEspinozaResume2026.pdf' },
   { action: 'linkedin', url: 'https://www.linkedin.com/in/coronaje/' },
   { action: 'message', fn: () => { document.getElementById('message-input').focus(); } },
   { action: 'contact', fn: () => { document.getElementById('message-input').focus(); } }
