@@ -236,8 +236,8 @@ main {
 /* Footer */
 .site-footer {
   max-width: 720px;
-  margin: 64px auto 0;
-  padding: 0 24px 48px;
+  margin: 48px auto 0;
+  padding: 0 24px 40px;
   position: relative;
 }
 
@@ -329,7 +329,12 @@ main {
 /* Responsive */
 @media (max-width: 600px) {
   main {
-    padding: 48px 16px 80px;
+    padding: 48px 16px 40px;
+  }
+
+  .site-footer {
+    margin-top: 24px;
+    padding-bottom: 32px;
   }
 
   .header h1 {
